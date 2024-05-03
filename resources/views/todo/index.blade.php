@@ -43,7 +43,7 @@
                                     </td>
 
                                     <td class="px-6 py-4">
-                                        {{ $todo->category->name ?? 'None' }}
+                                        {{ $todo->category->title ?? 'None' }}
                                     </td>
 
                                     <td class="hidden px-6 py-4 md:block">

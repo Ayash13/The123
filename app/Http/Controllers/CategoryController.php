@@ -9,7 +9,7 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::where('user_id', auth()->id())->get();
         return view('categories.index', compact('categories'));
     }
 
@@ -21,10 +21,10 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'name' => 'required|unique:categories',
-            'description' => 'nullable|string',
+            'title' => 'required|unique:categories'
         ]);
 
+        $validatedData['user_id'] = auth()->id();
         Category::create($validatedData);
         return redirect()->route('categories.index');
     }
@@ -42,8 +42,8 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         $validatedData = $request->validate([
-            'name' => 'required|unique:categories,name,' . $category->id,
-            'description' => 'nullable|string',
+            'title' => 'required|unique:categories',
+            'user_id' => 'required|exists:users,id'
         ]);
 
         $category->update($validatedData);

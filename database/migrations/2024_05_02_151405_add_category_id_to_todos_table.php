@@ -12,10 +12,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('todos', function (Blueprint $table) {
-            $table->unsignedBigInteger('category_id')->nullable()->after('id');
-
-            // Optional: Add foreign key constraint
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreignId('category_id')->nullable()->constrained()->cascadeOnDelete();
         });
     }
 

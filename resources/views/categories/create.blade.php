@@ -12,10 +12,10 @@
                     <form method="post" action="{{ route('categories.store') }}" class="">
                         @csrf
                         <div class="mb-6">
-                            <x-input-label for="name" :value="__('Name')" />
-                            <x-text-input id="name" name="name" type="text" class="block w-full mt-1"
-                                required autofocus autocomplete="name" />
-                            <x-input-error class="mt-2" :messages="$errors->get('name')" />
+                            <x-input-label for="title" :value="__('Title')" />
+                            <x-text-input id="title" name="title" type="text" class="block w-full mt-1"
+                                required autofocus autocomplete="title" />
+                            <x-input-error class="mt-2" :messages="$errors->get('title')" />
                         </div>
 
                         <div class="flex items-center gap-4">

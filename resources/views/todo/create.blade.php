@@ -25,7 +25,7 @@
                                 class="block w-full mt-1 text-white bg-gray-800 dark:text-gray-200">
                                 <option value="">None</option>
                                 @foreach ($categories as $category)
-                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    <option value="{{ $category->id }}">{{ $category->title }}</option>
                                 @endforeach
                             </select>
                             <x-input-error class="mt-2" :messages="$errors->get('category_id')" />
@@ -53,8 +53,8 @@
         }
 
         function submitForm() {
-            updateCategoryId(); // Ensure the category ID is updated before form submission
-            document.getElementById('todoForm').submit(); // Submit the form
+            updateCategoryId();
+            document.getElementById('todoForm').submit()
         }
     </script>
 </x-app-layout>

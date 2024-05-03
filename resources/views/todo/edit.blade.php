@@ -26,7 +26,7 @@
                                 @foreach ($categories as $category)
                                     <option value="{{ $category->id }}"
                                         {{ $category->id == $todo->category_id ? 'selected' : '' }}>
-                                        {{ $category->name }}
+                                        {{ $category->title }}
                                     </option>
                                 @endforeach
                             </select>

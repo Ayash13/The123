@@ -31,7 +31,7 @@ class TodoController extends Controller
      */
     public function create()
     {
-        $categories = Category::all(); // Fetch all categories
+        $categories = Category::where('user_id', auth()->id())->get();
         return view('todo.create', compact('categories'));
     }
 
@@ -67,12 +67,13 @@ class TodoController extends Controller
     public function edit(Todo $todo)
     {
         if (auth()->user()->id == $todo->user_id) {
-            $categories = Category::all(); // Fetch all categories
+            $categories = Category::where('user_id', auth()->id())->get();
             return view('todo.edit', compact('todo', 'categories'));
         } else {
             return redirect()->route('todo.index')->with('danger', 'You are not authorized to edit this todo!');
         }
     }
+
     public function update(Request $request, Todo $todo)
     {
         $validatedData = $request->validate([
