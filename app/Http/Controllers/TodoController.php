@@ -42,7 +42,7 @@ class TodoController extends Controller
     {
         $request->validate([
             'title' => 'required|max:255',
-            'category_id' => 'required|exists:categories,id',
+            'category_id' => 'nullable|exists:categories,id',
         ]);
 
         $todo = new Todo();
@@ -77,7 +77,7 @@ class TodoController extends Controller
     {
         $validatedData = $request->validate([
             'title' => 'required|max:255',
-            'category_id' => 'required|exists:categories,id',
+            'category_id' => 'nullable|exists:categories,id',
         ]);
 
         $todo->title = ucfirst($validatedData['title']);

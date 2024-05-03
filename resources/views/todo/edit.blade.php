@@ -22,6 +22,7 @@
                             <x-input-label for="category_id" :value="__('Category')" />
                             <select id="category_id" name="category_id"
                                 class="block w-full mt-1 text-white bg-gray-800 dark:text-gray-200">
+                                <option value="">None</option>
                                 @foreach ($categories as $category)
                                     <option value="{{ $category->id }}"
                                         {{ $category->id == $todo->category_id ? 'selected' : '' }}>
