@@ -21,7 +21,7 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'title' => 'required|unique:categories'
+            'title' => 'required'
         ]);
 
         $validatedData['user_id'] = auth()->id();
@@ -42,7 +42,7 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         $validatedData = $request->validate([
-            'title' => 'required|unique:categories',
+            'title' => 'required',
             'user_id' => 'required|exists:users,id'
         ]);
 
